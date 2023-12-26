@@ -9,4 +9,4 @@ hooks:
   AfterAllowTraffic:
     - location: /script/git_pull.sh
       timeout: 300
-      runas: ec2-user
+      runas: root
