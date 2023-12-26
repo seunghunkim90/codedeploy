@@ -9,4 +9,4 @@ hooks:
   ApplicationUpdate:
     - location: script/git_pull.sh
       timeout: 300
-      runas: root
+      runas: ec2-user
