@@ -6,7 +6,7 @@ files:
    - source: /README1.md
      destination: /home/ec2-user/test
 hooks:
-  ApplicationUpdate:
+  AfterAllowTraffic::
     - location: script/git_pull.sh
       timeout: 300
       runas: ec2-user
