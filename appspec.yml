@@ -3,3 +3,5 @@ os: linux
 files:
    - source: /README.md
      destination: /home/ec2-user/test
+   - source: /README1.md
+     destination: /home/ec2-user/test
