@@ -7,6 +7,6 @@ files:
      destination: /home/ec2-user/test
 hooks:
   BeforeInstall:
-    - location: /script/git_pull.sh
+    - location: script/git_pull.sh
       timeout: 300
       runas: ec2-user
