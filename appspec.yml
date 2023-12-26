@@ -1,6 +1,7 @@
 version: 0.0
 os: linux
 files:
-   - source: /
+   - source: /README.md
      destination: /home/ec2-user/test
-
+   - source: /README1.md
+     destination: /home/ec2-user/test
