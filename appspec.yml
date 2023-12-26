@@ -1,6 +1,6 @@
 version: 0.0
 os: linux
 files:
-   - source: /README.md
+   - source: source
      destination: /home/ec2-user/test
 
