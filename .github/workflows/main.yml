@@ -1,20 +1,20 @@
-name: "CICD test"
+name: Release to Production Environment
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+
 jobs:
-  build:
+  job1:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Deploy
-      env:
-        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        USER_NAME: ${{ secrets.USER_NAME }}
-        HOST_NAME: ${{ secrets.HOST_NAME }}
-      run: |
-        echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        ssh -q -tt -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME}
-        cd ~/e-bond-matching-api
-        git checkout main > /home/ec2-user/test/log1.txt
-        git pull > /home/ec2-user/test/log2.txt
+      - name: ssh and deploy
+        uses: appleboy/ssh-action@master # １
+        with: # ２ アクションの入力パラメータを指定
+          host: ${{ secrets.HOST_NAME }} # ホスト名
+          username: ${{ secrets.USER_NAME }} # SSH ユーザ名
+          key: ${{ secrets.PRIVATE_KEY }} # 秘密鍵の内容
+          port: ${{ secrets.SSH_PORT }} # ポート番号
+          script: |
+            touch /home/ec2-user/test/ok.txt
